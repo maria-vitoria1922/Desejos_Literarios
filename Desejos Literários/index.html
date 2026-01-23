@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desejos Literários</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Lancelot&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <header>
+       <div class="logo-area">
+            <img src="imgs/logo.png" alt="Logo" id="img_logo">
+            <div class="titulo">
+                <h1>Desejos</h1>
+                <h1 style=" margin-left: 15px;">Literários</h1>
+            </div>
+        </div>
+
+            <nav>
+                <ul>
+                    <li><a href="#sobrenos">Sobre nós</a></li>
+                    <li><a href="#cadastro">Cadastro</a></li>
+                    <li><a href="#lista">Lista</a></li>
+                </ul>
+            </nav>
+
+            <div id="icones">
+                <i class="fa-brands fa-facebook"></i>
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-whatsapp"></i>
+            </div>
+    </header>
+
+    <main>
+
+        <section id="sobre">
+            <h2 style=" font-size: 48px;">SOBRE NÓS</h2>
+                <p id="sobrenos">
+                  Seja bem vindo(a), somos uma plataforma online e gratuita a qual o objetivo é ajudar leitores a 
+                  organizar e administrar os livros os quais deseja ler, mostrando valores e  listando-os de forma
+                  organizada e clara. A leitura é algo encatandor, que abre nossa mente e nos ensina coisas 
+                  inimagináveis, deseje ler e sinta prazer em aprender. Aproveite nosso site e usufrua de seus 
+                  desejos literários.
+                </p>
+        </section>
+
+        <section id="cadastro">
+            <form>
+                <h2>Cadastro</h2>
+
+                <div>
+                    <label for="titulo">Título:</label>
+                    <input type="text" id="titulo" name="titulo" placeholder="Digite aqui o título da obra">
+                </div>
+
+                <div>
+                    <label for="descricao">Descrição:</label>
+                    <input type="text" id="descricao" name="descricao" placeholder="Breve descrição do livro">
+                </div>
+
+                <div>
+                    <label for="quantidade">Quantidade:</label>
+                    <input type="number" id="quantidade" name="quantidade" placeholder="Número de exemplares desejados">
+                </div>
+
+                <div>
+                    <label for="valor">Valor unitário:</label>
+                    <input type="number" id="valor" name="valor" placeholder="Valor da obra" step="0.01">
+                </div>
+
+            </form>
+            <button type="submit" id="btn-desejos">ADICIONAR</button>
+
+        </section>
+
+      <div id="obras"> 
+        <h2>SEUS DESEJOS</h2>
+
+            <div class="card">
+                <div class="icons">
+                 <span class="icon"><i class="fa-duotone fa-regular fa-trash-can"></i></span>
+                 <span class="icon"><i class="fa-duotone fa-solid fa-paintbrush"></i></i></span>
+                </div>
+
+                <h1>Titulo 1</h1>
+
+                <p>Descrição:</p>
+                <p>Quantidade:</p>
+                <p>Valor unitário:</p>
+            </div>
+       </div>
+
+    </main>
+    <footer id="footer">
+
+        <img src="imgs/logo.png" alt="logo">
+
+        <div id="contatos">
+            <div>
+                <i class="fa-brands fa-facebook"></i>
+                <p>desejosliterarios_</p>
+            </div>
+
+            <div>
+                <i class="fa-brands fa-instagram"></i>
+                <p> desejosliterarios._</p>
+            </div>
+
+            <div>
+                <i class="fa-brands fa-whatsapp"></i>
+                <p>(84) 9999-9999</p>
+            </div>
+        </div>
+
+        <div id="linha"></div>
+
+        <div id="links">
+            <p>Termos de consentimento</p>
+            <p>Política e privacidade</p>
+        </div>
+
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
