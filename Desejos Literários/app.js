@@ -4,6 +4,9 @@ const obras = document.getElementById("obras");
 const form = document.getElementById("formulario");
 const botaoLista = document.getElementById("btn-lista");
 
+// lista para armazenar os livros 
+const listalivros = [];
+
 // para as validações
 const titulo = document.getElementById("titulo");
 const descricao = document.getElementById("descricao");
@@ -32,28 +35,48 @@ form.addEventListener("submit", function (event) {
   }
 
   if (!titulo.value) {
-    mensagem.innerText = "Adicione um titulo ao livro!";
+    mensagem.innerText = "Adicione um título ao livro!";
     return;
   }
+
+  else if (Number(titulo.value) > 0 || Number(titulo.value) === 0) {
+  mensagem.innerText = " O nome do seu livro não está incorreto?";
+  return;
+}
 
   else if (!descricao.value) {
     mensagem.innerText = "Adicione uma descrição ao livro!";
     return;
   }
 
+  else if (Number(descricao.value) > 0 || Number(descricao.value) === 0) {
+  mensagem.innerText = "A descrição não pode conter apenas números!";
+  return;
+}
+
   else if (!quantidade.value) {
     mensagem.innerText = "Adicione a quantidade de livros!";
     return;
   }
+
+  else if (Number(quantidade.value) <= 0) {
+  mensagem.innerText = "Informe uma quantidade válida!";
+  return;
+}
 
   else if (!valor.value) {
     mensagem.innerText = "Adicione o valor do livro!";
     return;
   }
 
+  else if (Number(valor.value) <= 0) {
+  mensagem.innerText = "Informe um valor válido!";
+  return;
+}
+
   mensagem.innerText = "";
   adicionar_elemento();
-  botao.innerText = "Adicionado";
+  botao.innerText = "ADICIONADO";
 });
 
 function adicionar_elemento() {
@@ -63,29 +86,73 @@ function adicionar_elemento() {
   let quantidadeValor = quantidade.value;
   let valorUnitario = valor.value;
 
-  // cria o card
-  let card = document.createElement("div");
-  card.classList.add("card");
+   // cria o objeto do livro
+  let livro = {
+    titulo: tituloValor,
+    descricao: descricaoValor,
+    quantidade: quantidadeValor,
+    valor: valorUnitario
+  };
 
-  // adiciona os ícones e os elementos ao card
-  card.innerHTML = `
-    <div class="icons">
-      <span class="icon delete"><i class="fa-solid fa-trash-can"></i></span>
-      <span class="icon edit"><i class="fa-solid fa-paintbrush"></i></span>
-    </div>
+  // adiciona na lista
+  listalivros.push(livro);
 
-    <h1>${tituloValor}</h1>
-    <p><strong>Descrição:</strong> ${descricaoValor}</p>
-    <p><strong>Quantidade:</strong> ${quantidadeValor}</p>
-    <p><strong>Valor Unitário:</strong> R$${Number(valorUnitario).toFixed(2)}</p>
-  `;
+  // atualiza tela
+  renderizarLista();
 
-  // adiciona no container
-  obras.appendChild(card);
-
-  // limpa o form
+   // limpa 
   titulo.value = "";
   descricao.value = "";
   quantidade.value = "";
   valor.value = "";
+};
+
+  function renderizarLista() {
+  obras.innerHTML = "";
+
+  for (let i = 0; i < listalivros.length; i++) {
+    let novolivro = document.createElement("li");
+    novolivro.textContent = listalivros[i];
+
+
+  // adiciona os ícones e os elementos a UL
+  novolivro.innerHTML = `
+    <div class="icons">
+      <span class="delete"><i class="fa-solid fa-trash-can"></i></span>
+      <span class="edit"><i class="fa-solid fa-paintbrush"></i></span>
+    </div>
+
+    <h1>${listalivros[i].titulo}</h1>
+    <p><strong>Descrição:</strong> ${listalivros[i].descricao}</p>
+    <p><strong>Quantidade:</strong> ${listalivros[i].quantidade}</p>
+    <p><strong>Valor Unitário:</strong> R$${Number(listalivros[i].valor).toFixed(2)}</p>
+  `;
+  
+  // excluir item específico
+    novolivro.querySelector(".delete").addEventListener("click", () => {
+      listalivros.splice(i, 1);
+      mensagem.innerText = "Livro removido da sua lista de desejos com sucesso!";
+      renderizarLista();
+  
+    });
+
+  // editar item
+    novolivro.querySelector(".edit").addEventListener("click", () => {
+      let editarlivrocampo=prompt("Qual campo deseja editar? (titulo, descricao, quantidade, valor)");
+      let novoValor = prompt("Digite o novo valor:");
+      listalivros[i][editarlivrocampo] = novoValor;
+
+      if (editarlivrocampo !== "") {
+      titulo.value = listalivros[i].titulo;
+      descricao.value = listalivros[i].descricao;
+      quantidade.value = listalivros[i].quantidade;
+      valor.value = listalivros[i].valor;
+      
+      mensagem.innerText = "Campo editado com sucesso!";
+      renderizarLista();
+    }});
+  
+  // adiciona na lista
+  obras.appendChild(novolivro);
+  }
 }
