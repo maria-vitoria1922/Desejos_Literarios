@@ -1,3 +1,39 @@
+/*tema escuro*/
+.modo-escuro {
+  background-color:rgb(32, 32, 32) ;
+}
+
+.modo-escuro #cadastro form {
+  background-color: rgb(32, 32, 32) ;
+  color: rgb(185, 227, 234)
+}
+
+.modo-escuro #cadastro h2 {
+  color: rgb(185, 227, 234)
+}
+
+.modo-escuro #cadastro input {
+  background-color: rgb(255, 255, 255);
+  color:rgba(42, 87, 97, 1);
+}
+
+.modo-escuro #obras {
+  background-color: rgb(255, 255, 255);
+  color:rgba(42, 87, 97, 1);
+}
+
+.modo-escuro #titulo-obras {
+  color:rgb(255, 255, 255)
+}
+
+.modo-escuro #sobre {
+  color: rgb(241, 241, 241);
+}
+
+.modo-escuro #sobre h2{
+  color: rgb(185, 227, 234);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -12,7 +48,7 @@ html, body {
 }
 
 body {
-    background-color: #e6f4f7;
+    background-color: rgb(230, 244, 247);
     color: rgb(51, 51, 51);
 }
 
@@ -75,6 +111,19 @@ nav a:hover {
   font-size: 32px;
 }
 
+#tema {
+  font-size: 22px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s ease;
+  background-color: white;
+}
+
 main {
     margin: 40px auto;
 }
@@ -113,7 +162,7 @@ section h2 {
 #cadastro {
     width: 100%;
     padding: 60px 0;
-    background-image: url("Desejos Literários/imgs/img_cadrastro.png");
+    background-image: url("imgs/img_cadrastro.png");
     background-repeat: repeat;
     background-size: 500px;
 
@@ -167,30 +216,50 @@ input::placeholder {
   color: rgb(122, 174, 183);
 }
 
-button {
-    background-color: #b9e3ea;
-    color:rgba(42, 87, 97, 1);
-    border: none;
-    padding: 12px;
-    border-radius: 20px;
-    font-size: 24px;
-    cursor: pointer;
-    width: 20%;
-    font-weight: 600;
-    margin: 0 auto;
-    display: block;
-    border-color: rgba(42, 87, 97, 1);
-}
-
 button:hover {
     background-color: rgb(90, 166, 181);
+}
+
+#buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  margin-top: 25px;
+  flex-direction: row;  
+  flex-wrap: nowrap;  
+}   
+
+button {
+  padding: 14px 32px;
+  border-radius: 15px;
+  border: none;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  min-width: 200px;
+  width: auto;    
+  margin: 0;  
+  color: rgba(42, 87, 97, 1);    
+}
+
+#titulo-obras {
+  display: none;
+  margin-left: 60px;
+  margin-top: 40px;
+  color: rgba(42, 87, 97, 1);
+  font-size: 32px;
+  font-weight: 600;
 }
 
 #obras {
   background-color: rgb(169, 207, 215);
   color: rgba(42, 87, 97, 1);
   padding: 40px;
-  margin-left: 50px;
+  width: 80%;           
+  margin-left: 60px;    
+  margin-top: 20px;
+  border-radius: 20px;
   display: none;
 }
 
@@ -287,6 +356,16 @@ ul{
     justify-content: center;
   }
 
+  #buttons {
+    flex-direction: column;  
+    align-items: center;
+  }
+
+  #buttons button {
+    width: 220px;   
+    height: 50px;  
+    font-size: 18px;
+  }
 
   #sobre {
     margin-left: 0;
@@ -306,9 +385,11 @@ ul{
     width: 300px;
   }
 
-  #obras {
-    margin-left: 0;
-    padding: 20px;
+  #obras,
+  #titulo-obras {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   #cadastro form {
@@ -320,6 +401,7 @@ ul{
     width: 30%;
     height: 1px;
   }
+  
   #footer {
     flex-direction: column;
     gap: 20px;
@@ -370,13 +452,14 @@ ul{
   }
 
   button {
-    width: 40%;
     font-size: 20px;
   }
 
-  #obras {
-    margin-left: 0;
-    padding: 30px;
+  #obras,
+  #titulo-obras {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   #footer {

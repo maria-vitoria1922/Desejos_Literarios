@@ -6,7 +6,7 @@
     <title>Desejos Literários</title>
     <link rel="stylesheet" href="Desejos Literários/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Lancelot&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
@@ -30,6 +30,7 @@
             </nav>
 
             <div id="icones">
+                <i id="tema" class="fa-solid fa-moon"></i>
                 <i class="fa-brands fa-facebook"></i>
                 <i class="fa-brands fa-instagram"></i>
                 <i class="fa-brands fa-whatsapp"></i>
@@ -73,15 +74,17 @@
                     <label for="valor">Valor unitário:</label>
                     <input type="number" id="valor" name="valor" placeholder="Valor da obra" step="0.01">
                 </div>
-                <button  id="btn-desejos" type="submit">ADICIONAR</button>
-                <button type="button" id="btn-lista">Mostrar lista</button>
+
+                <div id="buttons">
+                    <button  id="btn-desejos" type="submit">ADICIONAR</button>
+                    <button type="button" id="btn-lista">MOSTRAR LISTA</button>
+                </div>
             </form>
 
         </section>
 
-        <h2>SEUS DESEJOS</h2>
-        <ul id="obras"> 
-        </ul>
+        <h2 id="titulo-obras">SEUS DESEJOS</h2>
+        <ul id="obras"></ul>
 
     </main>
 

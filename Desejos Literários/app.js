@@ -15,11 +15,15 @@ const valor = document.getElementById("valor");
 const mensagem = document.getElementById("msg");
 
 // mostra e esconde o container de obras
+const tituloObras = document.getElementById("titulo-obras");
+
 botaoLista.addEventListener("click", function () {
   if (obras.style.display === "none") {
+    tituloObras.style.display = "block";
     obras.style.display = "block";
     botaoLista.innerText = "Ocultar lista";
   } else {
+    tituloObras.style.display = "none";
     obras.style.display = "none";
     botaoLista.innerText = "Mostrar lista";
   }
@@ -76,7 +80,12 @@ form.addEventListener("submit", function (event) {
 
   mensagem.innerText = "";
   adicionar_elemento();
+
   botao.innerText = "ADICIONADO";
+  // o botão vira ADICIONADO
+  setTimeout(() => {
+   botao.innerText = "ADICIONAR";
+  }, 2000);
 });
 
 function adicionar_elemento() {
@@ -156,3 +165,18 @@ function adicionar_elemento() {
   obras.appendChild(novolivro);
   }
 }
+
+// troca de tema 
+const temaIcone = document.getElementById("tema");
+
+temaIcone.addEventListener("click", () => {
+  document.body.classList.toggle("modo-escuro");
+
+  if (document.body.classList.contains("modo-escuro")) {
+    temaIcone.classList.remove("fa-moon");
+    temaIcone.classList.add("fa-sun");
+  } else {
+    temaIcone.classList.remove("fa-sun");
+    temaIcone.classList.add("fa-moon");
+  }
+});
