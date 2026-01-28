@@ -21,11 +21,11 @@ botaoLista.addEventListener("click", function () {
   if (obras.style.display === "none") {
     tituloObras.style.display = "block";
     obras.style.display = "block";
-    botaoLista.innerText = "Ocultar lista";
+    botaoLista.innerText = "OCULTAR LISTA";
   } else {
     tituloObras.style.display = "none";
     obras.style.display = "none";
-    botaoLista.innerText = "Mostrar lista";
+    botaoLista.innerText = "MOSTRAR LISTA";
   }
 });
 
