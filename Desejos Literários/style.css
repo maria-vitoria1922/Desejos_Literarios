@@ -1,10 +1,10 @@
 /*tema escuro*/
 .modo-escuro {
-  background-color:rgb(32, 32, 32) ;
-}
+  background-color:rgba(13, 13, 40, 1);
+} 
 
 .modo-escuro #cadastro form {
-  background-color: rgb(32, 32, 32) ;
+  background-color: rgba(13, 13, 40, 1);
   color: rgb(185, 227, 234)
 }
 
@@ -273,6 +273,7 @@ button {
   background-color: rgb(169, 207, 215);
   border-radius: 16px;
   padding: 24px 32px;
+  margin-bottom: 20px;
   position: relative;
 }
 

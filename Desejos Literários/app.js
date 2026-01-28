@@ -43,27 +43,17 @@ form.addEventListener("submit", function (event) {
     return;
   }
 
-  else if (Number(titulo.value) > 0 || Number(titulo.value) === 0) {
-  mensagem.innerText = " O nome do seu livro não está incorreto?";
-  return;
-}
-
   else if (!descricao.value) {
     mensagem.innerText = "Adicione uma descrição ao livro!";
     return;
   }
-
-  else if (Number(descricao.value) > 0 || Number(descricao.value) === 0) {
-  mensagem.innerText = "A descrição não pode conter apenas números!";
-  return;
-}
 
   else if (!quantidade.value) {
     mensagem.innerText = "Adicione a quantidade de livros!";
     return;
   }
 
-  else if (Number(quantidade.value) <= 0) {
+  else if (quantidade.value <= 0) {
   mensagem.innerText = "Informe uma quantidade válida!";
   return;
 }
@@ -73,9 +63,19 @@ form.addEventListener("submit", function (event) {
     return;
   }
 
-  else if (Number(valor.value) <= 0) {
+  else if (valor.value <= 0) {
   mensagem.innerText = "Informe um valor válido!";
   return;
+}
+
+//se já estiver um livro com o mesmo título ele não deixa adicionar outro
+for (let i = 0; i < listalivros.length; i++) {
+  if (listalivros[i].titulo.toLowerCase() === titulo.value.toLowerCase()) {
+   {
+      mensagem.innerText = "Esse livro já está na sua lista de desejos!";
+      return;
+    }
+  }
 }
 
   mensagem.innerText = "";
@@ -121,8 +121,8 @@ function adicionar_elemento() {
 
   for (let i = 0; i < listalivros.length; i++) {
     let novolivro = document.createElement("li");
+    novolivro.classList.add("card");
     novolivro.textContent = listalivros[i];
-
 
   // adiciona os ícones e os elementos a UL
   novolivro.innerHTML = `
