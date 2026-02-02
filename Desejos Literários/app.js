@@ -7,6 +7,14 @@ const botaoLista = document.getElementById("btn-lista");
 // lista para armazenar os livros 
 const listalivros = [];
 
+// carregar dados do localStorage
+const dadosSalvos = JSON.parse(localStorage.getItem("livros"));
+
+if (dadosSalvos) {
+  listalivros.push(...dadosSalvos);
+  renderizarLista();
+}
+
 // para as validações
 const titulo = document.getElementById("titulo");
 const descricao = document.getElementById("descricao");
@@ -103,8 +111,10 @@ function adicionar_elemento() {
     valor: valorUnitario
   };
 
-  // adiciona na lista
   listalivros.push(livro);
+
+  // salva no localStorage
+  localStorage.setItem("livros", JSON.stringify(listalivros));
 
   // atualiza tela
   renderizarLista();
@@ -138,28 +148,36 @@ function adicionar_elemento() {
   `;
   
   // excluir item específico
-    novolivro.querySelector(".delete").addEventListener("click", () => {
-      listalivros.splice(i, 1);
+    novolivro.querySelector(".delete").addEventListener("click", () => {
+      listalivros.splice(i, 1);
+
+      // salva no localStorage
+      localStorage.setItem("livros", JSON.stringify(listalivros));
+
       mensagem.innerText = "Livro removido da sua lista de desejos com sucesso!";
-      renderizarLista();
-  
-    });
+      renderizarLista();
+
+    });
 
   // editar item
-    novolivro.querySelector(".edit").addEventListener("click", () => {
+    novolivro.querySelector(".edit").addEventListener("click", () => {
       let editarlivrocampo=prompt("Qual campo deseja editar? (titulo, descricao, quantidade, valor)");
       let novoValor = prompt("Digite o novo valor:");
       listalivros[i][editarlivrocampo] = novoValor;
 
+      // salva no localStorage
+      localStorage.setItem("livros", JSON.stringify(listalivros));
+
       if (editarlivrocampo !== "") {
-      titulo.value = listalivros[i].titulo;
-      descricao.value = listalivros[i].descricao;
-      quantidade.value = listalivros[i].quantidade;
-      valor.value = listalivros[i].valor;
-      
+      titulo.value = listalivros[i].titulo;
+      descricao.value = listalivros[i].descricao;
+      quantidade.value = listalivros[i].quantidade;
+      valor.value = listalivros[i].valor;
+
       mensagem.innerText = "Campo editado com sucesso!";
-      renderizarLista();
-    }});
+      renderizarLista();
+
+    }});
   
   // adiciona na lista
   obras.appendChild(novolivro);
