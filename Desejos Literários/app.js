@@ -54,41 +54,66 @@ form.addEventListener("submit", function (event) {
 
   if (!titulo.value && !descricao.value && !quantidade.value && !valor.value) {
     mensagem.innerText = "Preencha todos os campos!";
+
+    setTimeout(() => {
+      mensagem.innerText = "";
+    }, 3000);
     return;
   }
 
   if (!titulo.value) {
     mensagem.innerText = "Adicione um título ao livro!";
+    setTimeout(() => {
+      mensagem.innerText = "";
+    }, 3000);
     return;
   }
 
   else if (!descricao.value) {
     mensagem.innerText = "Adicione uma descrição ao livro!";
+    setTimeout(() => {
+      mensagem.innerText = "";
+    }, 3000);
     return;
   }
 
   else if (!quantidade.value) {
     mensagem.innerText = "Adicione a quantidade de livros!";
+    setTimeout(() => {
+      mensagem.innerText = "";
+    }, 3000);
     return;
   }
 
   else if (quantidade.value <= 0) {
     mensagem.innerText = "Informe uma quantidade válida!";
+    setTimeout(() => {
+      mensagem.innerText = "";
+    }, 3000);
     return;
   }
 
   else if (!categoria.value) {
     mensagem.innerText = "Selecione uma categoria!";
+    setTimeout(() => {
+      mensagem.innerText = "";
+    }, 3000);
     return;
   }
 
   else if (!valor.value) {
     mensagem.innerText = "Adicione o valor do livro!";
+    setTimeout(() => {
+      mensagem.innerText = "";
+    }, 3000);
     return;
   }
 
   else if (valor.value <= 0) {
   mensagem.innerText = "Informe um valor válido!";
+  setTimeout(() => {
+    mensagem.innerText = "";
+  }, 3000);
   return;
   
 }
@@ -98,6 +123,9 @@ for (let i = 0; i < listalivros.length; i++) {
   if (listalivros[i].titulo.toLowerCase() === titulo.value.toLowerCase()) {
    {
       mensagem.innerText = "Esse livro já está na sua lista de desejos!";
+      setTimeout(() => {
+        mensagem.innerText = "";
+      }, 3000);
       return;
     }
   }
@@ -145,6 +173,10 @@ function adicionar_elemento() {
   quantidade.value = "";
   valor.value = "";
   categoria.value = "";
+
+  setTimeout(() => {
+    mensagem.innerText = "";
+  }, 3000);
 };
 
   function renderizarLista() {
@@ -180,6 +212,10 @@ function adicionar_elemento() {
       renderizarLista();
       calcularMetricas();
 
+      setTimeout(() => {
+        mensagem.innerText = "";
+      }, 3000);
+
     });
 
   // editar item
@@ -196,10 +232,15 @@ function adicionar_elemento() {
       descricao.value = listalivros[i].descricao;
       quantidade.value = listalivros[i].quantidade;
       valor.value = listalivros[i].valor;
+      categoria.value = listalivros[i].categoria;
 
       mensagem.innerText = "Campo editado com sucesso!";
       renderizarLista();
       calcularMetricas();
+
+      setTimeout(() => {
+       mensagem.innerText = "";
+      }, 3000);
     }});
   
   // adiciona na lista
@@ -259,3 +300,4 @@ btnQuantidade.addEventListener("click", () => {
 btnMedia.addEventListener("click", () => {
   resultadoMedia.style.display = "block";
 });
+
