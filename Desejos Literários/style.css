@@ -489,6 +489,9 @@ ul{
     font-size: 22px;
     text-align: center;
   }
+  #obras{
+    overflow-wrap: break-word;
+  }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
