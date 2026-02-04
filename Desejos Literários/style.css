@@ -12,7 +12,8 @@
   color: rgb(185, 227, 234)
 }
 
-.modo-escuro #cadastro input {
+.modo-escuro #cadastro input,
+.modo-escuro #cadastro select {
   background-color: rgb(255, 255, 255);
   color:rgba(42, 87, 97, 1);
 }
@@ -33,6 +34,12 @@
 .modo-escuro #sobre h2{
   color: rgb(185, 227, 234);
 }
+
+.modo-escuro #metricas {
+  background-color: rgba(20, 76, 92, 0.575);
+  color: rgba(42, 87, 97, 1);
+}
+
 
 * {
     margin: 0;
@@ -153,7 +160,7 @@ section h2 {
 
 #sobre p{
     margin-top: 5px;
-    font-family: 'Lancelot', cursive;
+    font-family: 'Lancelot', cursiv;
     font-size: 32px;
     text-align: justify;
     margin-right: 40%;
@@ -188,6 +195,15 @@ section h2 {
     border-radius: 10px;
     border: none;
     background-color: rgba(216, 232, 235, 1);
+}
+
+#cadastro select{
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  background-color: rgba(216, 232, 235, 1);
+   color: rgb(122, 174, 183);
 }
 
 #cadastro button {
@@ -270,10 +286,10 @@ button {
 }
 
 .card {
-  background-color: rgb(169, 207, 215);
-  border-radius: 16px;
-  padding: 24px 32px;
-  margin-bottom: 20px;
+  background-color:rgba(154, 195, 205, 1);
+  border-radius: 15px;
+  padding: 15px;
+  margin: 15px;
   position: relative;
 }
 
@@ -333,6 +349,45 @@ button {
 ul{
   list-style-type: none;
 }
+
+#metricas {
+  width: 100%;
+  margin: 30px auto;
+  padding: 24px;
+  display: none;
+  background-color: rgba(42, 87, 97, 1);
+  color: rgba(42, 87, 97, 1);
+  margin-top: 40px;
+}
+
+#botoes-metricas {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+  padding-top: 20px;
+  gap: 10px;
+}
+
+#botoes-metricas button {
+  background-color: rgba(154, 195, 205, 1);
+  border-radius: 20px;
+  padding: 8px 18px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.resultado {
+  background-color:rgba(154, 195, 205, 1);
+  padding: 18px 22px;
+  border-radius: 15px;
+  margin-bottom: 12px;
+  font-size: 26px;
+  font-weight: bold;
+  display: none;
+  width: 84%;
+  margin: 10px auto;
+}
+
 
 @media (max-width: 768px) {
 
@@ -412,6 +467,28 @@ ul{
     margin-right: 0;  
     align-items: center;
   }
+
+   #metricas {
+    width: 90%;
+    margin: 20px auto;
+  }
+
+  #botoes-metricas {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  #botoes-metricas button {
+    width: 100%;
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  .resultado {
+    width: 100%;
+    font-size: 22px;
+    text-align: center;
+  }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
@@ -476,5 +553,24 @@ ul{
   #links {
     margin-right: 0;
     text-align: center;
+  }
+
+  #metricas {
+    width: 90%;
+    margin: 30px auto;
+  }
+
+  #botoes-metricas {
+    gap: 15px;
+  }
+
+  #botoes-metricas button {
+    flex: 1;
+    font-size: 16px;
+    padding: 10px;
+  }
+
+  .resultado {
+    font-size: 24px;
   }
 }

@@ -74,6 +74,19 @@
                     <label for="valor">Valor unitário:</label>
                     <input type="number" id="valor" name="valor" placeholder="Valor da obra" step="0.01">
                 </div>
+                <div>
+                    
+                <label for="categoria">Categoria:</label>
+                <select id="categoria" name="categoria">
+                    <option value="">Selecione uma categoria</option>
+                    <option value="Romance">Romance</option>
+                    <option value="Fantasia">Fantasia</option>
+                    <option value="Ficção">Ficção</option>
+                    <option value="Suspense">Suspense</option>
+                    <option value="Terror">Terror</option>
+                    <option value="Didático">Didático</option>
+                </select>
+                </div>
 
                 <div id="buttons">
                     <button  id="btn-desejos" type="submit">ADICIONAR</button>
@@ -85,6 +98,28 @@
         
         <h2 id="titulo-obras">SEUS DESEJOS</h2>
         <ul id="obras"></ul>
+
+        <div id="metricas">
+
+            <div id="botoes-metricas">
+                <button id="btn-total">Calcular total</button>
+                <button id="btn-quantidade">Quantidade total</button>
+                <button id="btn-media">Calcular média</button>
+            </div>
+
+            <div id="resultado-total" class="resultado">
+                TOTAL: R$ <span id="valor-total"></span>
+            </div>
+
+            <div id="resultado-quantidade" class="resultado">
+                QUANTIDADE: <span id="valor-quantidade"></span>
+            </div>
+
+            <div id="resultado-media" class="resultado">
+                MÉDIA: R$ <span id="valor-media"></span>
+            </div>
+
+        </div>
 
     </main>
 

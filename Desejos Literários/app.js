@@ -20,6 +20,7 @@ const titulo = document.getElementById("titulo");
 const descricao = document.getElementById("descricao");
 const quantidade = document.getElementById("quantidade");
 const valor = document.getElementById("valor");
+const categoria = document.getElementById("categoria");
 const mensagem = document.getElementById("msg");
 
 // mostra e esconde o container de obras
@@ -29,13 +30,21 @@ botaoLista.addEventListener("click", function () {
   if (obras.style.display === "none") {
     tituloObras.style.display = "block";
     obras.style.display = "block";
+    metricas.style.display = "block";
     botaoLista.innerText = "OCULTAR LISTA";
   } else {
     tituloObras.style.display = "none";
     obras.style.display = "none";
+    metricas.style.display = "none";
+
+    resultadoTotal.style.display = "none";
+    resultadoQuantidade.style.display = "none";
+    resultadoMedia.style.display = "none";
+
     botaoLista.innerText = "MOSTRAR LISTA";
   }
 });
+
 
 // validações do cadastro
 form.addEventListener("submit", function (event) {
@@ -62,9 +71,14 @@ form.addEventListener("submit", function (event) {
   }
 
   else if (quantidade.value <= 0) {
-  mensagem.innerText = "Informe uma quantidade válida!";
-  return;
-}
+    mensagem.innerText = "Informe uma quantidade válida!";
+    return;
+  }
+
+  else if (!categoria.value) {
+    mensagem.innerText = "Selecione uma categoria!";
+    return;
+  }
 
   else if (!valor.value) {
     mensagem.innerText = "Adicione o valor do livro!";
@@ -74,6 +88,7 @@ form.addEventListener("submit", function (event) {
   else if (valor.value <= 0) {
   mensagem.innerText = "Informe um valor válido!";
   return;
+  
 }
 
 //se já estiver um livro com o mesmo título ele não deixa adicionar outro
@@ -107,6 +122,7 @@ function adicionar_elemento() {
   let livro = {
     titulo: tituloValor,
     descricao: descricaoValor,
+    categoria: categoria.value,
     quantidade: quantidadeValor,
     valor: valorUnitario
   };
@@ -124,6 +140,7 @@ function adicionar_elemento() {
   descricao.value = "";
   quantidade.value = "";
   valor.value = "";
+  categoria.value = "";
 };
 
   function renderizarLista() {
@@ -145,6 +162,7 @@ function adicionar_elemento() {
     <p><strong>Descrição:</strong> ${listalivros[i].descricao}</p>
     <p><strong>Quantidade:</strong> ${listalivros[i].quantidade}</p>
     <p><strong>Valor Unitário:</strong> R$${Number(listalivros[i].valor).toFixed(2)}</p>
+    <p><strong>Categoria:</strong> ${listalivros[i].categoria || "Não informada"}</p>
   `;
   
   // excluir item específico
@@ -197,4 +215,51 @@ temaIcone.addEventListener("click", () => {
     temaIcone.classList.remove("fa-sun");
     temaIcone.classList.add("fa-moon");
   }
+});
+const metricas = document.getElementById("metricas");
+
+const btnTotal = document.getElementById("btn-total");
+const btnQuantidade = document.getElementById("btn-quantidade");
+const btnMedia = document.getElementById("btn-media");
+
+const resultadoTotal = document.getElementById("resultado-total");
+const resultadoQuantidade = document.getElementById("resultado-quantidade");
+const resultadoMedia = document.getElementById("resultado-media");
+
+// calcular total
+btnTotal.addEventListener("click", () => {
+  let total = 0;
+
+  for (let i = 0; i < listalivros.length; i++) {
+    total += listalivros[i].quantidade * listalivros[i].valor;
+  }
+
+  resultadoTotal.style.display = "block";
+  document.getElementById("valor-total").innerText = total.toFixed(2);
+});
+
+// calcular quantidade
+btnQuantidade.addEventListener("click", () => {
+  let quantidadeTotal = 0;
+
+  for (let i = 0; i < listalivros.length; i++) {
+    quantidadeTotal += Number(listalivros[i].quantidade);
+  }
+
+  resultadoQuantidade.style.display = "block";
+  document.getElementById("valor-quantidade").innerText = quantidadeTotal;
+});
+
+// calcular média
+btnMedia.addEventListener("click", () => {
+  let total = 0;
+
+  for (let i = 0; i < listalivros.length; i++) {
+    total += listalivros[i].quantidade * listalivros[i].valor;
+  }
+
+  let media = total / listalivros.length;
+
+  resultadoMedia.style.display = "block";
+  document.getElementById("valor-media").innerText = media.toFixed(2);
 });
