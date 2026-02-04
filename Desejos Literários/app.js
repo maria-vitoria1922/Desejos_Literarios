@@ -27,8 +27,10 @@ const mensagem = document.getElementById("msg");
 // mostra e esconde o container de obras
 const tituloObras = document.getElementById("titulo-obras");
 
-botaoLista.addEventListener("click", function () {
-  if (obras.style.display === "none") {
+botaoLista.addEventListener("click", () => {
+  const estaOculto = getComputedStyle(obras).display === "none";
+
+  if (estaOculto) {
     tituloObras.style.display = "block";
     obras.style.display = "block";
     metricas.style.display = "block";
@@ -45,7 +47,6 @@ botaoLista.addEventListener("click", function () {
     botaoLista.innerText = "MOSTRAR LISTA";
   }
 });
-
 
 // validações do cadastro
 form.addEventListener("submit", function (event) {
@@ -183,7 +184,7 @@ function adicionar_elemento() {
 
   // editar item
     novolivro.querySelector(".edit").addEventListener("click", () => {
-      let editarlivrocampo=prompt("Qual campo deseja editar? (titulo, descricao, quantidade, valor)");
+      let editarlivrocampo=prompt("Qual campo deseja editar? (titulo, descricao, quantidade, valor, categoria)");
       let novoValor = prompt("Digite o novo valor:");
       listalivros[i][editarlivrocampo] = novoValor;
 
