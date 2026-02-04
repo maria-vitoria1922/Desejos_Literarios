@@ -13,6 +13,7 @@ const dadosSalvos = JSON.parse(localStorage.getItem("livros"));
 if (dadosSalvos) {
   listalivros.push(...dadosSalvos);
   renderizarLista();
+  calcularMetricas();
 }
 
 // para as validações
@@ -134,7 +135,9 @@ function adicionar_elemento() {
 
   // atualiza tela
   renderizarLista();
+  calcularMetricas();
 
+  mensagem.innerText = "Este livro foi adicionado com sucesso à sua lista de desejos!";
    // limpa 
   titulo.value = "";
   descricao.value = "";
@@ -174,6 +177,7 @@ function adicionar_elemento() {
 
       mensagem.innerText = "Livro removido da sua lista de desejos com sucesso!";
       renderizarLista();
+      calcularMetricas();
 
     });
 
@@ -194,7 +198,7 @@ function adicionar_elemento() {
 
       mensagem.innerText = "Campo editado com sucesso!";
       renderizarLista();
-
+      calcularMetricas();
     }});
   
   // adiciona na lista
@@ -226,40 +230,31 @@ const resultadoTotal = document.getElementById("resultado-total");
 const resultadoQuantidade = document.getElementById("resultado-quantidade");
 const resultadoMedia = document.getElementById("resultado-media");
 
-// calcular total
-btnTotal.addEventListener("click", () => {
+//funcao para calcular total, quantidade e media dos valores
+function calcularMetricas() {
   let total = 0;
-
-  for (let i = 0; i < listalivros.length; i++) {
-    total += listalivros[i].quantidade * listalivros[i].valor;
-  }
-
-  resultadoTotal.style.display = "block";
-  document.getElementById("valor-total").innerText = total.toFixed(2);
-});
-
-// calcular quantidade
-btnQuantidade.addEventListener("click", () => {
   let quantidadeTotal = 0;
 
   for (let i = 0; i < listalivros.length; i++) {
+    total += listalivros[i].quantidade * listalivros[i].valor;
     quantidadeTotal += Number(listalivros[i].quantidade);
   }
 
-  resultadoQuantidade.style.display = "block";
+  let media = quantidadeTotal > 0 ? total / quantidadeTotal : 0;
+
+  document.getElementById("valor-total").innerText = total.toFixed(2);
   document.getElementById("valor-quantidade").innerText = quantidadeTotal;
+  document.getElementById("valor-media").innerText = media.toFixed(2);
+}
+
+btnTotal.addEventListener("click", () => {
+  resultadoTotal.style.display = "block";
 });
 
-// calcular média
+btnQuantidade.addEventListener("click", () => {
+  resultadoQuantidade.style.display = "block";
+});
+
 btnMedia.addEventListener("click", () => {
-  let total = 0;
-
-  for (let i = 0; i < listalivros.length; i++) {
-    total += listalivros[i].quantidade * listalivros[i].valor;
-  }
-
-  let media = total / listalivros.length;
-
   resultadoMedia.style.display = "block";
-  document.getElementById("valor-media").innerText = media.toFixed(2);
 });
